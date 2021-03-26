@@ -25,6 +25,7 @@ public class RegisterController {
     @PostMapping
     public boolean addUser(@RequestParam String email, @RequestParam String password)
     {
+        System.out.println("???");
        return usersApplication.addUser(email, password);
     }
 

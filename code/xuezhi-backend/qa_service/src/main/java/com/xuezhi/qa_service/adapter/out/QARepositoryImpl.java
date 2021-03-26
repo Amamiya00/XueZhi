@@ -53,8 +53,21 @@ public class QARepositoryImpl implements QARepository {
         return temp;
     }
 
-    public List<Question> getQuestionsBySchool(String school){
-        Query query = new Query(Criteria.where("school").is(school));
+    public List<Question> getQuestionsBySchool(String school, String area){
+        Query query;
+        if(school.equals("public")){
+            query = new Query(Criteria.where("school").is(school));
+            System.out.println("1111");
+        }else{
+            if(area.equals("all")){
+                query = new Query(Criteria.where("school").is(school));
+            }else{
+                query = new Query(Criteria
+                        .where("school").is(school)
+                        .and("area").is(area));
+                System.out.println("2222");
+            }
+        }
         return mongoTemplate.find(query, Question.class,"question");
     }
 
@@ -66,7 +79,7 @@ public class QARepositoryImpl implements QARepository {
 
      */
 
-    public void addQuestion(String title, String description, String askerId, String school)
+    public void addQuestion(String title, String description, String askerId, String school, String area)
     {
         Question q = new Question();
         q.setTitle(title);
@@ -74,6 +87,7 @@ public class QARepositoryImpl implements QARepository {
         q.setAskerId(askerId);
         q.setSchool(school);
         q.setUpdateTime(getUpdateTime());
+        q.setArea(area);
         qaRepositor.save(q);
     }
 
@@ -183,6 +197,22 @@ public class QARepositoryImpl implements QARepository {
         for(Question each : questionList)
             schoolList.add(each.getSchool());
         return new ArrayList<>(new HashSet<>(schoolList));
+    }
+
+    public List<Question> findAllQuestions(String school, String area){
+        List<Question> questionList;
+        if(area.equals("all")){
+            questionList = qaRepositor.findQuestionBySchool(school);
+        }else{
+            questionList = qaRepositor.findQuestionBySchoolAndArea(school,area);
+        }
+        List<Question> questionList1 = new ArrayList<>();
+        for (Question each : questionList){
+            if (each.getAnswerList().isEmpty()){
+                questionList1.add(each);
+            }
+        }
+        return questionList1;
     }
 
     private String getUpdateTime()

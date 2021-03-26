@@ -2,7 +2,7 @@
 .write{
     position: absolute;
     left:28%;
-    width:44%;
+    width:49.4%;
     height: 100%;
     background: #fff;
 }
@@ -11,13 +11,21 @@
     margin: 80px auto;
 }
 
+.write .selectdiv{
+    height: 50px;
+    padding-right: 10px;
+}
+
+.write div .select{
+    float: right;
+}
 
 .write div .switch{
     float:right;
 }
 
 .write .switchdiv{
-    height: 100px;
+    height: 50px;
 }
 .write .buttondiv{
     display: block;

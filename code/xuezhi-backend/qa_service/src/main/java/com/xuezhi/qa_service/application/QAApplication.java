@@ -29,6 +29,10 @@ public class QAApplication {
         return qaRepository.getQuestionByQuestionId(questionId);
     }
 
+    public List<Question> getAllNoAnswerQuestions(String school, String area){
+        return qaRepository.findAllQuestions(school,area);
+    }
+
     public List<Map<String, String>> getQuestionByAskerId(String askerId){
         List<Question> questionList = qaRepository.getQuestionByAskerId(askerId);
         List<Map<String, String>> resultList = new ArrayList<>();
@@ -41,8 +45,8 @@ public class QAApplication {
         return resultList;
     }
 
-    public void addQuestion(String title, String description, String askerId, String school){
-        qaRepository.addQuestion(title, description, askerId, school);
+    public void addQuestion(String title, String description, String askerId, String school, String area){
+        qaRepository.addQuestion(title, description, askerId, school, area);
     }
 
     public void updateQuestion(String questionId, String title, String description){
@@ -69,8 +73,8 @@ public class QAApplication {
         return qaRepository.getQuestionByRegex(regex,school);
     }
 
-    public List<Map<String, Object>> getRecommends(String university) throws IOException {
-        List<Question> questionList = qaRepository.getQuestionsBySchool(university);
+    public List<Map<String, Object>> getRecommends(String university, String area) throws IOException {
+        List<Question> questionList = qaRepository.getQuestionsBySchool(university, area);
         List<Map<String, Object>> mapList = new ArrayList<>();
 
         if (questionList.size() == 0){
@@ -82,17 +86,27 @@ public class QAApplication {
 
         Random random = new Random();
         if (questionList.size() <= defaultRecommedNum){
-            for (Question question : questionList){
+            for (int i = 0;i < questionList.size();i++){
+                Question question = questionList.get(i);
                 Map<String, Object> map = new HashMap<>();
                 String questionId = question.getQuestionId();
                 String title = question.getTitle();
-                map.put("questionId", questionId);
-                map.put("title", title);
+
                 Answer answer = getRandomAnswer(question);
                 if (answer != null){
                     map.put("author", getUserById(answer.getAuthorId()));
                     map.put("answer", answer);
+                }else{
+                    questionList.remove(question);
+                    continue;
                 }
+                map.put("questionId", questionId);
+                map.put("title", title);
+                mapList.add(map);
+            }
+            if (mapList.isEmpty()){
+                Map<String, Object> map = new HashMap<>();
+                map.put("questionId", "null");
                 mapList.add(map);
             }
             return mapList;

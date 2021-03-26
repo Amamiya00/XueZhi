@@ -7,6 +7,7 @@ import Header from "../component/header"
 import cookie from "react-cookies";
 import "./college.css"
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class College extends Component {
   // 加载一次，初始化状态
@@ -18,7 +19,7 @@ class College extends Component {
   // 加载一次，Dom 未加载
   componentWillMount() {
     let _this = this;
-    const url = "http://49.234.73.158:8085/v1/user_service/users/" + cookie.load("userId");
+    const url = "http://localhost:8085/v1/user_service/users/" + cookie.load("userId");
     axios.get(url).then(
         function (response) {
           _this.setState(
@@ -48,13 +49,21 @@ class College extends Component {
 
   }
 
+  _click1=()=>{
+    this.props.history.push("./college")
+  }
+
+  _click2=()=>{
+    this.props.history.push("./collegenews")
+  }
+
   _net(page) {
     let _this=this;
     this.setState({ progressShow: true })
 
 
     var school = this.state.school;
-    const url = "http://49.234.73.158:8085/v1/qa_service/recommends/"+school;
+    const url = "http://localhost:8085/v1/qa_service/recommends/"+school+"/all";
 
 
     let data;
@@ -81,6 +90,8 @@ class College extends Component {
             <Progress show={this.state.progressShow} />
             <SnackBar open={this.state.snackBarOpen} content={this.state.content} />
             <div className="left">
+              <button id="11" onClick={this._click1} className="btn-1">为您推荐</button>
+              <button id="22" onClick={this._click2} className="btn-2">等待回答</button>
               {atricleItems}
             </div>
             <div className="right">
@@ -88,6 +99,43 @@ class College extends Component {
                 本站主要愿景：<br />
                 建立高等教育信息分享平台，统一中国高校的经验分享市场，解决中国青年的升学和迷茫问题<br />
                 <h1>{this.state.school} &nbsp;University</h1>
+              </div>
+              <div className="areacard">
+                问题分区：<br />
+                <div className="areacarditems">
+                  <div className="areacarditem">
+                    <Link to="/college/xuexi" style={{textDecoration:'none',color:'#8590a6'}}>
+                      <img  width='95px' height='95px' src="https://s3.ax1x.com/2021/03/14/60Uxm9.png"></img><br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;学习专区
+                    </Link>
+
+                  </div>
+                  <div className="areacarditem" >
+                    <Link to="/college/shetuan" style={{textDecoration:'none',color:'#8590a6'}}>
+                      <img  width='95px' height='95px' src="https://s3.ax1x.com/2021/03/14/60amTI.png"></img><br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;社团专区
+                    </Link>
+
+                  </div>
+                </div>
+                <div className="areacarditems" style={{marginLeft:'40px'}}>
+                  <div className="areacarditem">
+                    <Link to="/college/shenghuo" style={{textDecoration:'none',color:'#8590a6'}}>
+                      <img  width='95px' height='95px' src="https://s3.ax1x.com/2021/03/14/60a7Bd.png"></img><br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;生活专区
+                    </Link>
+
+                  </div>
+                  <div className="areacarditem">
+                    <Link to="/college/qita" style={{textDecoration:'none',color:'#8590a6'}}>
+                      <img  width='95px' height='95px' src="https://s3.ax1x.com/2021/03/14/60a36g.png"></img><br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他
+                    </Link>
+
+                  </div>
+                </div>
+                <br />
+
               </div>
             </div>
           </div>

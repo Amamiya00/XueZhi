@@ -32,12 +32,12 @@ class Userhistory extends Component {
   }
   _net() {
     this.setState({ progressShow: true });
-    const url = "http://49.234.73.158:8085/v1/user_service/users/history/"+cookie.load('userId');
+    const url = "http://localhost:8085/v1/user_service/users/history/"+cookie.load('userId');
     let _this = this;
     let data = [];
     axios.get(url).then(function (response) {
       for(let i = 0; i <response.data.length; i++) {
-        const url = "http://49.234.73.158:8085/v1/qa_service/question/"+response.data[i].id;
+        const url = "http://localhost:8085/v1/qa_service/question/"+response.data[i].id;
         axios.get(url).then(function (response) {
           data[i] = response.data;
           //data.push(response.data);

@@ -244,6 +244,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     private Binary getToolAvatar()
     {
-        return userRepositor.findUserById("5e048c04df66842e11bbba03").getAvatar();
+        return userRepositor.findUserById("6053072a52a55b3f8d576479").getAvatar();
     }
 }

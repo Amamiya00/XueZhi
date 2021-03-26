@@ -12,13 +12,13 @@ public interface QARepository {
 
     List<Question> getQuestionByRegex(String regex,String school);
 
-    List<Question> getQuestionsBySchool(String school);
+    List<Question> getQuestionsBySchool(String school, String area);
 
     List<String> getSchoolList();
 
     //List<Answer> getAnswerListByQuestionId(String questionId);
 
-    void addQuestion(String title, String description, String askerId, String school);
+    void addQuestion(String title, String description, String askerId, String school, String area);
 
     void updateQuestion(String questionId, String title, String description);
 
@@ -34,4 +34,5 @@ public interface QARepository {
     //添加评论
     void addComment(String questionId, String authorId, String commentatorId, String description);
 
+    List<Question> findAllQuestions(String school, String area);
 }

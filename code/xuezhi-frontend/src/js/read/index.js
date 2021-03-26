@@ -27,7 +27,7 @@ class Read extends React.Component{
     let userId = str;
 
 
-    const url = "http://49.234.73.158:8085/v1/qa_service/question/"+ this.props.location.query.foo+ "/"+this.props.location.query.boo;
+    const url = "http://localhost:8085/v1/qa_service/question/"+ this.props.location.query.foo+ "/"+this.props.location.query.boo;
 
     var _this = this;
 

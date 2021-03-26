@@ -19,8 +19,8 @@ public class RecommendController {
         this.qaApplication = qaApplication;
     }
 
-    @GetMapping("/recommends/{university}")
-    public List<Map<String, Object>> getRecommends(@PathVariable(value = "university") String university) throws IOException {
-        return qaApplication.getRecommends(university);
+    @GetMapping("/recommends/{university}/{area}")
+    public List<Map<String, Object>> getRecommends(@PathVariable(value = "university") String university, @PathVariable(value = "area") String area) throws IOException {
+        return qaApplication.getRecommends(university, area);
     }
 }

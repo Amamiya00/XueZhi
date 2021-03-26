@@ -1,0 +1,117 @@
+.areas{
+    padding-top: 60px;
+}
+
+.areas .left{
+    display: inline-block;
+    width: 70%;
+}
+
+.areas .left .btn-1{
+    margin-left:10px;
+    margin-top:0px;
+    width:150px;
+    height:30px;
+    border:none;
+    margin-bottom: 7px;
+    background: #0f88eb;
+    color: #fff;
+}
+
+.areas .left .btn-1:hover{
+    background-color: #000fff;
+}
+
+.areas .left .btn-2{
+    margin-left:10px;
+    marginTop:0px;
+    width:150px;
+    height:30px;
+    border:none;
+    margin-bottom: 7px;
+}
+
+.areas .left .btn-2:hover {
+    background-color: #AAAAAF;
+}
+
+.areas .right{
+    display: inline-block;
+    position: fixed;
+    width: 300px;
+}
+
+.areas .right .card {
+    margin-left: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    background: #fff;
+    padding: 10px;
+    color: #8590a6;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.areas .right .areacard {
+    margin-left: 10px;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    background: #fff;
+    padding: 10px;
+    color: #626876;
+    font-size: 14px;
+    line-height: 25px;
+    height: 300px;
+}
+
+.areas .right .areacard .areacarditems{
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+}
+
+.areas .right .areacarditems .areacarditem{
+    margin-top: 8px;
+}
+
+.areas .footer{
+    margin-left: 13px;
+    margin-top: 5px;
+}
+
+.areas .footer .footer-dot{
+    font-size: 13px;
+    line-height: 2;
+    color: #8590a6;
+}
+
+.areas .footer .footer-dot:after {
+    margin: 0 5px;
+    content: "\B7";
+}
+
+.areas .footer .footer-item{
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    color: #8590a6;
+}
+
+.areas .moblie {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .areas{
+        padding-top: 135px;
+    }
+    .areas .left{
+        width: 100%;
+    }
+    .areas .right{
+        display: none;
+    }
+
+    .areas .moblie {
+        display: block;
+    }
+}

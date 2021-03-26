@@ -10,7 +10,7 @@ class Me extends Component {
   // 加载一次，初始化状态
   constructor(props) {
     super(props)
-    let url="http://49.234.73.158:8085/v1/user_service/users/avatar/" + cookie.load('userId');
+    let url="http://localhost:8085/v1/user_service/users/avatar/" + cookie.load('userId');
     let name,age,sex,userstate;
 
     this.state = {
@@ -21,7 +21,7 @@ class Me extends Component {
       url,
     }
     var _this = this
-    axios.get("http://49.234.73.158:8085/v1/user_service/users/"+cookie.load('userId'))
+    axios.get("http://localhost:8085/v1/user_service/users/"+cookie.load('userId'))
         .then(function (response) {
           _this.setState(
               {
@@ -83,7 +83,7 @@ class Me extends Component {
     }
 
     this.setState({ progressShow: true })
-    const url = "http://49.234.73.158:8085/v1/user_service/users/information";
+    const url = "http://localhost:8085/v1/user_service/users/information";
     var code;
     let data = new URLSearchParams();
     data.append('id',cookie.load('userId'));

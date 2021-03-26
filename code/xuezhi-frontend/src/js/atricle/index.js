@@ -31,7 +31,7 @@ class Oauth extends Component {
   }
   _net() {
     this.setState({ progressShow: true });
-    const url = "http://49.234.73.158:8085/v1/qa_service/questions/"+cookie.load('userId');
+    const url = "http://localhost:8085/v1/qa_service/questions/"+cookie.load('userId');
     let _this = this;
     let data = [];
     axios.get(url).then(function (response) {

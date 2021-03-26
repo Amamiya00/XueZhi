@@ -7,6 +7,34 @@
   width: 70%;
 }
 
+.college .left .btn-1{
+  margin-left:10px;
+  margin-top:0px;
+  width:150px;
+  height:30px;
+  border:none;
+  margin-bottom: 7px;
+  background: #0f88eb;
+  color: #fff;
+}
+
+.college .left .btn-1:hover{
+  background-color: #000fff;
+}
+
+.college .left .btn-2{
+  margin-left:10px;
+  marginTop:0px;
+  width:150px;
+  height:30px;
+  border:none;
+  margin-bottom: 7px;
+}
+
+.college .left .btn-2:hover{
+  background-color: #AAAAAF;
+}
+
 .college .right{
   display: inline-block;  
   position: fixed;
@@ -22,6 +50,31 @@
   font-size: 14px;
   line-height: 25px;
 }
+
+.college .right .areacard {
+  margin-left: 10px;
+  margin-top: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  background: #fff;
+  padding: 10px;
+  color: #626876;
+  font-size: 14px;
+  line-height: 25px;
+  height: 300px;
+}
+
+.college .right .areacard .areacarditems{
+  margin-left: 10px;
+  margin-top: 10px;
+  float: left;
+}
+
+.college .right .areacarditems .areacarditem{
+  margin-top: 8px;
+
+}
+
+
 
 .college .footer{
   margin-left: 13px;

@@ -56,7 +56,7 @@ class AtricleItem extends Component {
       like,
       likeBool,
       messageCount: 0, //评论条数
-      headUrl: "http://49.234.73.158:8085/v1/user_service/users/avatar/"+userId, //头像图片url
+      headUrl: "http://localhost:8085/v1/user_service/users/avatar/"+userId, //头像图片url
       showRead,
       messagesShow,
       full,
@@ -81,7 +81,56 @@ class AtricleItem extends Component {
 
   componentWillMount() {
     let _this = this;
-    const url = "http://49.234.73.158:8085/v1/user_service/users/" + this.state.userId;
+    const url = "http://localhost:8085/v1/user_service/users/" + this.state.userId;
+    axios.get(url).then(
+        function (response) {
+          _this.setState(
+              {
+                user:response.data
+              }
+          )
+        }
+    )
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    let likeBool = false;
+    let likesMap = nextProps.item.answer.likesMap;
+    for(var key in likesMap)
+    {
+      if(key == cookie.load("userId") && likesMap[key] != 0)
+      {
+        likeBool = true;
+      }
+    }
+    let showRead = false;
+    let messagesShow = false;
+    let full = false;
+    if (nextProps.skip) {
+      showRead = true
+      messagesShow = true
+      full = true
+    }
+    this.setState({
+      title:nextProps.item.title,
+      userId: nextProps.item.answer.authorId,
+      data:nextProps.item.answer.description,
+      like: nextProps.item.answer.likes,
+      likeBool:likeBool,
+      messageCount: 0,
+      headUrl: "http://localhost:8085/v1/user_service/users/avatar/"+nextProps.item.answer.authorId,
+      showRead:showRead,
+      messagesShow:messagesShow,
+      full:full,
+      tag: "问答",
+      questionId:nextProps.item.questionId,
+      user:[],
+      loginUser:cookie.load("userId"),
+      answerList:nextProps.item.answer.answerComments,
+      answerListLength:nextProps.item.answer.answerComments.length
+    });
+    let _this = this;
+    const url = "http://localhost:8085/v1/user_service/users/" + this.state.userId;
     axios.get(url).then(
         function (response) {
           _this.setState(
@@ -102,6 +151,7 @@ class AtricleItem extends Component {
           <div>
             <span className="span">{this.state.tag}</span>
           </div>
+          <Link className="h1" to={{pathname:"/question/"+this.state.questionId,hash:"",query:{foo: this.state.questionId, boo:'boz'}}}>{this.state.title}</Link>          {/* 内容 */}
           {/* 用户信息 */}
           <div className="user">
             <div className="left">
@@ -113,7 +163,7 @@ class AtricleItem extends Component {
             </div>
           </div>
           {/* 标题 */}
-          <Link className="h1" to={{pathname:"/question/"+this.state.questionId,hash:"",query:{foo: this.state.questionId, boo:'boz'}}}>{this.state.title}</Link>          {/* 内容 */}
+
           <div className="content">
             {this._readInfo()}
           </div>
@@ -198,7 +248,7 @@ class AtricleItem extends Component {
     this.setState({ likeBool, like })
 
 
-    const url = "http://49.234.73.158:8085/v1/qa_service/qa/likes";
+    const url = "http://localhost:8085/v1/qa_service/qa/likes";
     let data = new URLSearchParams();
     data.append('questionId', this.state.questionId);
     data.append('authorId', this.state.userId);

@@ -7,6 +7,7 @@ import Header from "../component/header"
 
 import "./home.css"
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class Home extends Component {
   // 加载一次，初始化状态
@@ -18,6 +19,7 @@ class Home extends Component {
   // 加载一次，Dom 未加载
   componentWillMount() {
     this._net()
+
   }
 
   // 加载一次，这里 Dom 已经加载完成
@@ -25,15 +27,24 @@ class Home extends Component {
 
   }
 
+  _click1=()=>{
+    this.props.history.push("./")
+  }
+
+  _click2=()=>{
+    this.props.history.push("./news")
+  }
+
   _net() {
     this.setState({ progressShow: true });
 
-    const url = "http://49.234.73.158:8085/v1/qa_service/recommends/public";
+    const url = "http://localhost:8085/v1/qa_service/recommends/public/qita";
 
     let _this = this;
 
     let data;
     axios.get(url).then(function (response) {
+      console.log(response.data);
       data = response.data;
       _this.setState({
         items: data,
@@ -56,6 +67,8 @@ class Home extends Component {
             <Progress show={this.state.progressShow} />
             <SnackBar open={this.state.snackBarOpen} content={this.state.content} />
             <div className="left">
+              <button id="11" onClick={this._click1} className="btn-1">为您推荐</button>
+              <button id="22" onClick={this._click2} className="btn-2">等待回答</button>
               {atricleItems}
             </div>
             <div className="right">
@@ -63,6 +76,7 @@ class Home extends Component {
                 本站主要愿景：<br />
                 建立高等教育信息分享平台，统一中国高校的经验分享市场，解决中国青年的升学和迷茫问题<br />
               </div>
+
             </div>
           </div>
         </div>

@@ -43,7 +43,7 @@ class HistoryItem extends Component {
             like: 0,
             likeBool,
             messageCount: 0, //评论条数
-            headUrl: "http://49.234.73.158:8085/v1/user_service/users/avatar/"+userId,//头像图片url
+            headUrl: "http://localhost:8085/v1/user_service/users/avatar/"+userId,//头像图片url
             showRead,
             messagesShow,
             full,
@@ -96,7 +96,7 @@ class HistoryItem extends Component {
     }
     _cancelfocus(e){
 
-        const url="http://49.234.73.158:8085/v1/user_service/users/followList/"+cookie.load('userId')+"/"+this.state.questionId;
+        const url="http://localhost:8085/v1/user_service/users/followList/"+cookie.load('userId')+"/"+this.state.questionId;
 
         axios.delete(url).then(function (response) {
 

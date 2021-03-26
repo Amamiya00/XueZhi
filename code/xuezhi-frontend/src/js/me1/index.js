@@ -39,7 +39,7 @@ class Me1 extends Component {
   }
   _picture(e){
     avatar.upload({
-      url: 'http://49.234.73.158:8085/v1/user_service/users/avatar',
+      url: 'http://localhost:8085/v1/user_service/users/avatar',
       name: 'multipartFile',
       data: {id: cookie.load('userId')},
       success: function (data) {

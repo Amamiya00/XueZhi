@@ -24,6 +24,12 @@ public class Question {
 
     private List<Answer> answerList;
 
+    private String area;
+
+    public String getArea(){ return area;}
+
+    public void setArea(String area) {this.area = area;}
+
     public String getQuestionId() {
         return questionId;
     }

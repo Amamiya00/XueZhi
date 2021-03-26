@@ -43,10 +43,24 @@ class MessageComponent extends Component {
   _textarea(e) {
     this.setState({ message: e.target.value })
   }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    this.setState({
+      progressShow: false,
+      snackBarOpen: false,
+      messages: nextProps.answerComments,
+      questionId: nextProps.questionId,
+      userId: nextProps.authorId,
+      answerListLength: nextProps.answerComments.length,
+      message: ''
+    })
+
+  }
+
   render() {
     const messagesItems = this.state.messages.map((item, index) => {
-      const headUrl = "http://49.234.73.158:8085/v1/user_service/users/avatar/"+item.commentatorId
-      const url = "http://49.234.73.158:8085/v1/user_service/users/" + item.commentatorId;
+      const headUrl = "http://localhost:8085/v1/user_service/users/avatar/"+item.commentatorId
+      const url = "http://localhost:8085/v1/user_service/users/" + item.commentatorId;
 
       return(<div key={index}>
 
@@ -100,7 +114,7 @@ class MessageComponent extends Component {
 
 
 
-    const url = "http://49.234.73.158:8085/v1/qa_service/qa/answers/comments";
+    const url = "http://localhost:8085/v1/qa_service/qa/answers/comments";
     let data = new URLSearchParams();
     data.append('questionId', this.state.questionId);
     data.append('authorId', this.state.userId);

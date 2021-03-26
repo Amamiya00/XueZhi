@@ -50,7 +50,7 @@ class AnswerItem extends Component {
             like,
             likeBool,
             messageCount: 0, //评论条数
-            headUrl: "http://49.234.73.158:8085/v1/user_service/users/avatar/"+userId, //头像图片url
+            headUrl: "http://localhost:8085/v1/user_service/users/avatar/"+userId, //头像图片url
             showRead,
             messagesShow,
             full,
@@ -73,7 +73,7 @@ class AnswerItem extends Component {
 
     componentWillMount() {
         let _this = this;
-        const url = "http://49.234.73.158:8085/v1/user_service/users/" + this.state.userId;
+        const url = "http://localhost:8085/v1/user_service/users/" + this.state.userId;
         axios.get(url).then(
             function (response) {
                 _this.setState(
@@ -189,7 +189,7 @@ class AnswerItem extends Component {
         this.setState({ likeBool, like })
 
 
-        const url = "http://49.234.73.158:8085/v1/qa_service/qa/likes";
+        const url = "http://localhost:8085/v1/qa_service/qa/likes";
         let data = new URLSearchParams();
         data.append('questionId', this.state.questionId);
         data.append('authorId', this.state.userId);

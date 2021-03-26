@@ -25,7 +25,7 @@ class Editor extends React.Component {
     }
     render() {
         return (
-            <div ref="editorElem" className="editorElem"></div>
+            <div style={{width:'750px'}} ref="editorElem" className="editorElem"></div>
         );
     }
 }

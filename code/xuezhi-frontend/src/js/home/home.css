@@ -7,6 +7,35 @@
   width: 70%;
 }
 
+.home .left .btn-1{
+  margin-left:10px;
+  margin-top:0px;
+  width:150px;
+  height:30px;
+  border:none;
+  margin-bottom: 7px;
+  background: #0f88eb;
+  color: #fff;
+}
+
+.home .left .btn-1:hover{
+  background-color: #000fff;
+}
+
+.home .left .btn-2{
+  margin-left:10px;
+  marginTop:0px;
+  width:150px;
+  height:30px;
+  border:none;
+  margin-bottom: 7px;
+}
+
+.home .left .btn-2:hover{
+  background-color: #AAAAAF;
+}
+
+
 .home .right{
   display: inline-block;
   position: fixed;
@@ -15,6 +44,7 @@
 
 .home .right .card {
   margin-left: 10px;
+  margin-top: 20px;
   box-shadow: 0 1px 3px rgba(0,0,0,.1);
   background: #fff;
   padding: 10px;
@@ -22,6 +52,7 @@
   font-size: 14px;
   line-height: 25px;
 }
+
 
 .home .footer{
   margin-left: 13px;

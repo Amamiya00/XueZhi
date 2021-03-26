@@ -51,7 +51,7 @@ class Register extends Component {
   }
   //验证邮箱
   _checkmail(){
-    const url = "http://49.234.73.158:8085/v1/user_service/register/checkcode";
+    const url = "http://localhost:8085/v1/user_service/register/checkcode";
     let data = new URLSearchParams();
     let _this = this;
     data.append('email',this.state.mail);
@@ -117,7 +117,7 @@ class Register extends Component {
   }
   _clickRegister(){
     const _this = this;
-    const url = "http://49.234.73.158:8085/v1/user_service/register";
+    const url = "http://localhost:8085/v1/user_service/register";
     var code;
     let data = new URLSearchParams();
     data.append('email',_this.state.mail);
@@ -129,7 +129,7 @@ class Register extends Component {
             let dat1 = new URLSearchParams();
             dat1.append('email',_this.state.mail);
             dat1.append('password',_this.state.password);
-            const url = "http://49.234.73.158:8085/v1/user_service/login";
+            const url = "http://localhost:8085/v1/user_service/login";
             var code;
             axios.post(url, dat1)
                 .then(function (response) {

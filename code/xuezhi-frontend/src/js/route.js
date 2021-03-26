@@ -20,6 +20,11 @@ import Userhistory from "./userhistory";
 import Userfocus from "./userfocus";
 import Searchpage from "./searchpage";
 import Me1 from "./me1";
+import News from "./news";
+import Areas from "./areas";
+import CollegeNews from "./collegenews";
+import AreasNews from "./areasnews";
+
 class App extends Component {
   render() {
     return (
@@ -49,8 +54,24 @@ class App extends Component {
             <Route exact path="/question/:questionId?" component={Question}/>
             {/* 回答详情 */}
             <Route exact path="/question/:questionId/authorId/:authorId?" component={Read} />
+            {/* 待回答列表 */}
+            <Route exact path="/news" component={News}/>
+            {/* 校内待回答 */}
+            <Route exact path="/collegenews" component={CollegeNews}/>
             {/* 主页文章列表 */}
             <Route exact path="/:page?" component={Home} />
+            {/* 学习分区 */}
+            <Route exact path="/college/xuexi" component={Areas} />
+            {/* 生活分区 */}
+            <Route exact path="/college/shenghuo" component={Areas} />
+            {/* 社团分区 */}
+            <Route exact path="/college/shetuan" component={Areas} />
+            {/* 其他分区 */}
+            <Route exact path="/college/qita" component={Areas} />
+            <Route exact path="/college/xuexinews" component={AreasNews} />
+            <Route exact path="/college/shenghuonews" component={AreasNews} />
+            <Route exact path="/college/shetuannews" component={AreasNews} />
+            <Route exact path="/college/qitanews" component={AreasNews} />
           </Switch>
         </div>
       </Router>

@@ -32,7 +32,7 @@ class Checkschool extends Component {
       el: '#avatar1',
       backgroundColor: '#ffffff'
     });
-      const url = "http://49.234.73.158:8085/v1/qa_service/schools";
+      const url = "http://localhost:8085/v1/qa_service/schools";
       let _this = this;
       let data;
       axios.get(url).then(function (response) {
@@ -57,7 +57,7 @@ class Checkschool extends Component {
   _picture(e){
       let _this = this;
     avatar1.upload({
-      url: 'http://49.234.73.158:8085/v1/check_service/verification',
+      url: 'http://localhost:8085/v1/check_service/verification',
       name: 'multipartFile',
       data: {userId: cookie.load('userId'),intention:$("#selectbox").val(),remark:$("#inputbox").val()},
       success: function (data) {

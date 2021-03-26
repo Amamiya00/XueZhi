@@ -12,4 +12,8 @@ public interface QARepositor extends MongoRepository<Question, String> {
     List<Question> findQuestionByAskerId(String askerId);
 
     void deleteQuestionByQuestionId(String questionId);
+
+    List<Question> findQuestionBySchoolAndArea(String school, String area);
+
+    List<Question> findQuestionBySchool(String school);
 }

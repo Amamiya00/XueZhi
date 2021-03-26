@@ -34,7 +34,7 @@ class Searchpage extends React.Component {
     _net(page) {
         let _this = this;
 
-        const url = "http://49.234.73.158:8085/v1/qa_service/answers/regex/"+this.props.location.query.foo+"/"+cookie.load('university');
+        const url = "http://localhost:8085/v1/qa_service/answers/regex/"+this.props.location.query.foo+"/"+cookie.load('university');
 
 
 

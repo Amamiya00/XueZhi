@@ -32,7 +32,7 @@ class Question extends React.Component{
             _this.props.history.push('/')
             return;
         }
-        const url = "http://49.234.73.158:8085/v1/qa_service/question/"+ this.props.location.query.foo + "/"+cookie.load("userId")
+        const url = "http://localhost:8085/v1/qa_service/question/"+ this.props.location.query.foo + "/"+cookie.load("userId")
 
 
         var data;
@@ -83,7 +83,7 @@ class Question extends React.Component{
     }
     _addquestionClick(e){
 
-        const url = "http://49.234.73.158:8085/v1/user_service/users/followList";
+        const url = "http://localhost:8085/v1/user_service/users/followList";
         let data = new URLSearchParams();
         data.append('questionId',this.state.questionId);
         data.append('id',cookie.load('userId'));
@@ -109,7 +109,7 @@ class Question extends React.Component{
         let _this = this;
         var editor = this.refs.editorContext;
         var answer = editor.state.editor.txt.html();
-        const url = "http://49.234.73.158:8085/v1/qa_service/qa/answers"
+        const url = "http://localhost:8085/v1/qa_service/qa/answers"
         let data = new URLSearchParams();
         data.append('questionId',this.state.questionId);
         data.append('authorId',cookie.load("userId"));

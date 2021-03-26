@@ -2,11 +2,13 @@ package com.xuezhi.qa_service.adapter.in;
 
 
 import com.xuezhi.qa_service.application.QAApplication;
+import com.xuezhi.qa_service.domain.entity.Question;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 //@CrossOrigin
 @RestController
@@ -20,10 +22,16 @@ public class QAController {
         this.qaApplication = qaApplication;
     }
 
+    @GetMapping("/questions/{school}/{area}")
+    public List<Question> getNoAnswerQuestions(@PathVariable String school, @PathVariable String area){
+        System.out.println("????");
+        return qaApplication.getAllNoAnswerQuestions(school,area);
+    }
+
     @PostMapping("/questions")
     @ApiOperation("create a question by giving some details")
-    public void addQuestion(@RequestParam String title,@RequestParam String description,@RequestParam String askerId, @RequestParam String school) throws IOException {
-        qaApplication.addQuestion(title, description, askerId, school);
+    public void addQuestion(@RequestParam String title,@RequestParam String description,@RequestParam String askerId, @RequestParam String school, @RequestParam String area) throws IOException {
+        qaApplication.addQuestion(title, description, askerId, school, area);
     }
 
     @PutMapping("/questions")
